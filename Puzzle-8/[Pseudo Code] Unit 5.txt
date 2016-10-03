@@ -1,0 +1,89 @@
+/*
+*
+*Google: Applied CS with Android
+*
+*Created by Rajat Talesra
+*Date: 24/09/2016
+*
+*Unit 5 Puzzle-8
+*Pseudo Code
+*
+*References:
+*https://www.youtube.com/watch?v=eTx6HQ9Veas
+*/
+
+"Preparation Part"
+1. Add ImageView ivImage and Initialize imageview
+
+2. onActivityResult and dispatchTakePictureIntent
+	2.1 Simply search "dispatchTakePictureIntent Android" on Google
+	2.2 https://developer.android.com/training/camera/photobasics.html
+	2.3 Implement the code
+
+*******You can run and check the photo functionality*******
+
+"Workshop Part"
+3. Now remove ImageView and start using PuzzleBoardView
+
+4. PuzzleBoard Constructor
+	4.1 Initialize variables if required
+	4.2 Use scaledBitmap to convert to square image
+	4.3 Loops for NxN tiles
+		4.3.1 Get current tile number
+		4.3.2 Check if not last then,
+		4.3.3 Use createBitmap to convert to smaller tile
+		4.3.4 Create new PuzzleTile object and add to tiles arraylist
+		4.3.5 else, tiles.add null
+
+5. Shuffle Functionality || PuzzleBoard.neighbours
+	5.1 Create temp ArrayList and variables
+	5.2 Create new PuzzleBoard constructor/ copy constructor
+	5.3 For loop to get empty tiles coordinates (white space coordinates)
+	5.4 For loop to fun possible neighbour arrangements
+		5.4.1 get neighbour coordinates
+		5.4.2 check conditions, if true
+		5.4.3 create neighbour puzzleboard
+		5.4.4 create new puzzle board arrangement by swapping tiles
+		5.4.5 add to neighbours arraylist
+	5.5 return neighbours arraylist
+
+6. Shuffle Functionality || PuzzleBoardView.shuffle
+	6.1 For loop for number of shuffles
+	6.2 Create arraylist of valid moves
+	6.3 Randomly select one of the valid moves
+	6.4 invalidate
+
+*******You can run and check the shuffle functionality*******
+
+7. PuzzleBoard Copy Constructor
+
+8. PuzzleBoard.priority
+	8.1 Manhattan Distance = 0
+	8.2 for loop for each tile
+	8.3 if current tile is not null
+	8.4 get tile number
+	8.5 get correct X and Y
+	8.6 get distance between correct and current
+	8.7 return
+
+9. PuzzleBoard previousBoard set/get methods
+
+10. PuzzleBoardView create PQ comparator
+
+11. PuzzleBoardView.solve
+	11.1 PriorityQueue on PuzzleBoard with comparator
+	11.2 Current PuzzleBoard
+	11.3 Previous Board Null
+	11.4 add to priority queue
+	11.5 while PQ is not empty
+		11.5.1 Get best state from PQ poll
+		11.5.2 best state is not solved, then addAll neighbours to PQ
+		11.5.3 else ArrayList steps of puzzleBoard
+		11.5.4 while previousBoard is not null
+		11.5.5 add to steps Arraylist
+		11.5.6 Change best state
+		11.5.7 Reverse steps
+		11.5.8 set steps to animation
+		11.5.9 invalidate
+
+*******You can run and check the solve functionality*******
